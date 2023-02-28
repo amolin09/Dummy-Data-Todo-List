@@ -27,7 +27,7 @@ const logTodos = () => {
 const populateTodos = () =>{
  const todoList = document.getElementById("todo-list")
 
- for(i = 0; i <= arrayOfTodos.length; i++){
+ for(i = 0; i < arrayOfTodos.length; i++){
   const todoItem = arrayOfTodos[i]
   const todoLi = document.createElement('LI')
   const todoItemTitle = document.createTextNode(todoItem.title)
