@@ -1,0 +1,31 @@
+body{
+background-color: lightgrey;
+}
+
+button{
+  width: 300px;
+  height: 40px;
+  margin: 50px 50px;
+  background-color: rgb(138, 184, 138);
+}
+
+button:hover{
+  background-color:rgb(76, 177, 76);
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+ol{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+
+}
+
+li{
+  width: 300px;
+  padding: 10px; 
+  margin: 20px;
+  background-color: white;
+}

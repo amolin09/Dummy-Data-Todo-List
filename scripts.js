@@ -30,8 +30,11 @@ const populateTodos = () =>{
  for(i = 0; i < arrayOfTodos.length; i++){
   const todoItem = arrayOfTodos[i]
   const todoLi = document.createElement('LI')
-  const todoItemTitle = document.createTextNode(todoItem.title)
-  todoLi.appendChild(todoItemTitle)
-  todoList.appendChild(todoLi)
- }
+  let todoItemTitle = document.createTextNode(todoItem.title)
+    if(todoItem.completed == true){
+      todoLi.style.textDecoration = "line-through"
+    }
+      todoLi.appendChild(todoItemTitle)
+      todoList.appendChild(todoLi)
+  }
 }
