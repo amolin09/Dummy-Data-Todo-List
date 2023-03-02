@@ -9,9 +9,17 @@
   <title>Todo List</title>
 </head>
 <body>
-  <button onclick="fetchTodos()">Fetch Todos</button>
-  <button onclick="logTodos()">Log Todos</button>
-  <button onclick="populateTodos()">Populate Todos</button>
+  <div class="header" id="header"> 
+    <button onclick="fetchTodos()">Fetch Todos</button>
+    <button onclick="logTodos()">Log Todos</button>
+    <button onclick="populateTodos()">Populate Todos</button>
+    <button onclick="filterTodos()">Filter Todos</button> 
+  </div>
+
+  <label for="userId">Enter userId</label>
+  <input type="number" id="userId"><button type="submit" id="userId" onclick="getUserId()"></button>
+  
+ 
   <ol id="todo-list">
 
   </ol>

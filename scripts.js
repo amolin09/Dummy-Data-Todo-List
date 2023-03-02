@@ -13,6 +13,8 @@ let arrayOfTodos = [
   }
 ]
 
+let todoList = document.getElementById("todo-list")
+
 const fetchTodos = () => {
   fetch('https://jsonplaceholder.typicode.com/todos')
   .then((response) => response.json())
@@ -25,7 +27,7 @@ const logTodos = () => {
 }
 
 const populateTodos = () =>{
- const todoList = document.getElementById("todo-list")
+ 
 
  for(i = 0; i < arrayOfTodos.length; i++){
   const todoItem = arrayOfTodos[i]
@@ -37,4 +39,27 @@ const populateTodos = () =>{
       todoLi.appendChild(todoItemTitle)
       todoList.appendChild(todoLi)
   }
+}
+
+const filterTodos = () => {
+  removeLi()
+  let filteredByUserId = arrayOfTodos.filter(todo => todo.userId == 2)
+  console.log(filteredByUserId)
+  for(i = 0; i < filteredByUserId.length; i++){
+    const todoItem = filteredByUserId[i]
+    const todoLi = document.createElement('LI')
+    let todoItemTitle = document.createTextNode(todoItem.title)
+        todoLi.appendChild(todoItemTitle)
+        todoList.appendChild(todoLi)
+    }
+}
+
+const removeLi = () => {
+while (todoList.hasChildNodes()){
+  todoList.removeChild(todoList.firstChild)
+}
+}
+
+const getUserId = () => {
+  
 }
