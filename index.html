@@ -9,9 +9,39 @@
   <title>Todo List</title>
 </head>
 <body>
-  <button onclick="fetchTodos()">Fetch Todos</button>
-  <button onclick="logTodos()">Log Todos</button>
-  <button onclick="populateTodos()">Populate Todos</button>
+  <div class="header" id="header"> 
+    <button onclick="fetchTodos()">Fetch Todos</button>
+    <button onclick="logTodos()">Log Todos</button>
+    <button onclick="populateTodos()">Populate Todos</button>
+     
+  </div>
+
+<div class="header2" id="header2">
+  <div class="filterButtons" id = "filterById">
+    <button onclick="filterTodosById()">Filter Todos by User ID</button>
+    <label for="userId">Enter userId</label>
+    <input type="number" id="userId" min=1 max=10 onkeyup="getUserId()">
+  </div>
+
+  <div class="filterCompletion" id="filterByCompleted">
+    <button onclick="filterTodosByCompleted()">Filter Todos by Completed</button>
+  </div>
+
+  <div class="filterCompletion" id="filterByIncomplete">
+    <button onclick="filterTodosByIncompleted()">Filter Todos by Incompleted</button>
+  </div>
+</div>
+
+<div class="header3" id="header3">
+  <div class="clearButton">
+    <button onclick="clearEverything()">Clear List</button>
+  </div>
+</div>
+
+<div id="userIdHeading">
+
+</div>
+ 
   <ol id="todo-list">
 
   </ol>
