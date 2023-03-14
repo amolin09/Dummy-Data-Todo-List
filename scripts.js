@@ -2,6 +2,25 @@ let arrayOfTodos = []
 let todoList = document.getElementById("todo-list")
 let useridHeadingPlace = document.getElementById("userIdHeading")
 let filteredTodo = []
+let userIdContainer = document.getElementById('user-id-container')
+let userIdCheckedConfirm = false
+
+const verifyUserIdFieldChecked = () =>{
+  const userIdChecked = document.getElementById('user-id-checkbox').checked
+    if(userIdChecked){
+      const userIdField = document.createElement('input')
+      userIdField.type = "number"
+      userIdField.min = 1
+      userIdField.max = 10
+      userIdField.id = "user-Id-Field"
+      userIdContainer.appendChild(userIdField)
+      userIdCheckedConfirm = true
+    }
+    else{
+      userIdContainer.removeChild(userIdContainer.firstChild)
+      userIdCheckedConfirm = false
+    }
+}
 
 const fetchTodos = () => {
   fetch('https://jsonplaceholder.typicode.com/todos')
@@ -17,21 +36,31 @@ const logTodos = () => {
 const populateTodos = () =>{
   removeH1()
   removeLi()
-  const userIdHeadingElement = document.createElement('h1')
-  let userIdHeading = document.createTextNode('All Todos')
-  userIdHeadingElement.appendChild(userIdHeading)
-  useridHeadingPlace.appendChild(userIdHeadingElement)
 
- for(i = 0; i < arrayOfTodos.length; i++){
-  const todoItem = arrayOfTodos[i]
-  const todoLi = document.createElement('LI')
-  let todoItemTitle = document.createTextNode(todoItem.title)
-    if(todoItem.completed == true){
-      todoLi.style.textDecoration = "line-through"
-    }
+  const completedSelected = document.getElementById('completed-checkbox').checked
+  if(userIdCheckedConfirm){
+    filterTodosById()
+  }
+  else if(completedSelected){
+    filterTodosByCompleted()
+  }
+  else{
+    const userIdHeadingElement = document.createElement('h1')
+    let userIdHeading = document.createTextNode('All Todos')
+    userIdHeadingElement.appendChild(userIdHeading)
+    useridHeadingPlace.appendChild(userIdHeadingElement)
+
+  for(i = 0; i < arrayOfTodos.length; i++){
+    const todoItem = arrayOfTodos[i]
+    const todoLi = document.createElement('LI')
+    let todoItemTitle = document.createTextNode(todoItem.title)
+      if(todoItem.completed == true){
+        todoLi.style.textDecoration = "line-through"
+      }
       todoLi.appendChild(todoItemTitle)
       todoList.appendChild(todoLi)
-  }
+    }
+  } 
 }
 
 const removeLi = () => {
@@ -53,11 +82,11 @@ const clearEverything = () => {
 }
 
 const clearIdField = () => {
-  document.getElementById('userId').value = ''
+  document.getElementById('user-Id-Field').value = ''
 }
 
 const getUserId = () => {
-  return document.getElementById('userId').value
+  return document.getElementById('user-Id-Field').value
 }
 
 const filterTodosById = () => {
@@ -181,3 +210,4 @@ const filterTodosByIncompleted = () =>{
     alert('Please enter a valid ID number between 1 - 10')
   }
 }
+

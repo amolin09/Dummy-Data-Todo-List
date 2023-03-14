@@ -84,3 +84,7 @@ li{
   margin: 20px;
   background-color: white;
 }
+
+#user-Id-Field{
+  width: 100px;
+}

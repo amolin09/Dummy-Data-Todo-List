@@ -16,6 +16,16 @@
      
   </div>
 
+  <div class ="filtering-checkbox-container">
+    <input type="checkbox" id="user-id-checkbox" onclick="verifyUserIdFieldChecked()">
+    <label for="user-id-checkbox">Filter by ID</label>
+    <div id="user-id-container"></div>
+    <input type="checkbox" id="completed-checkbox">
+    <label for="user-id-checkbox">Filter by Complete</label>
+    <input type="checkbox" id="incompleted-checkbox">
+    <label for="user-id-checkbox">Filter by Incomplete</label>
+  </div>
+
 <div class="header2" id="header2">
   <div class="filterButtons" id = "filterById">
     <button onclick="filterTodosById()">Filter Todos by User ID</button>
