@@ -5,6 +5,32 @@ let filteredTodo = []
 let userIdContainer = document.getElementById('user-id-container')
 let userIdCheckedConfirm = false
 
+const removeLi = () => {
+  while (todoList.hasChildNodes()){
+  todoList.removeChild(todoList.firstChild)
+  }
+}
+
+const removeH1 = () => {
+  if(useridHeadingPlace.hasChildNodes()){
+  useridHeadingPlace.removeChild(useridHeadingPlace.firstChild)
+}
+}
+
+const clearEverything = () => {
+  removeLi()
+  removeH1()
+  clearIdField()
+}
+
+const clearIdField = () => {
+  document.getElementById('user-Id-Field').value = ''
+}
+
+const getUserId = () => {
+  return document.getElementById('user-Id-Field').value
+}
+
 const verifyUserIdFieldChecked = () =>{
   const userIdChecked = document.getElementById('user-id-checkbox').checked
     if(userIdChecked){
@@ -45,6 +71,7 @@ const populateTodos = () =>{
     filterTodosByCompleted()
   }
   else{
+    console.log(arrayOfTodos)
     const userIdHeadingElement = document.createElement('h1')
     let userIdHeading = document.createTextNode('All Todos')
     userIdHeadingElement.appendChild(userIdHeading)
@@ -63,38 +90,14 @@ const populateTodos = () =>{
   } 
 }
 
-const removeLi = () => {
-  while (todoList.hasChildNodes()){
-  todoList.removeChild(todoList.firstChild)
-  }
-}
 
-const removeH1 = () => {
-  if(useridHeadingPlace.hasChildNodes()){
-  useridHeadingPlace.removeChild(useridHeadingPlace.firstChild)
-}
-}
-
-const clearEverything = () => {
-  removeLi()
-  removeH1()
-  clearIdField()
-}
-
-const clearIdField = () => {
-  document.getElementById('user-Id-Field').value = ''
-}
-
-const getUserId = () => {
-  return document.getElementById('user-Id-Field').value
-}
 
 const filterTodosById = () => {
   
   const userId = getUserId()
   clearIdField()
   
-  if(userId < 1 || userId > 10){
+  if(userId < 1 || userId > 10 || !userId){
     alert('Please enter a valid ID number between 1 - 10')
   }
   else{
